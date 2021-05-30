@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0182FEAEB81ED5D4A8090C91 /* Pods_iossimplelife_iossimplelifeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D069E9962E0708277DBDF616 /* Pods_iossimplelife_iossimplelifeUITests.framework */; };
 		2D322A4C2642EA0500FD1A09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D322A4B2642EA0500FD1A09 /* AppDelegate.swift */; };
 		2D322A4E2642EA0500FD1A09 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D322A4D2642EA0500FD1A09 /* SceneDelegate.swift */; };
 		2D322A502642EA0500FD1A09 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D322A4F2642EA0500FD1A09 /* MainViewController.swift */; };
@@ -22,14 +23,24 @@
 		2D322A9A26482C9A00FD1A09 /* AddRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D322A9926482C9A00FD1A09 /* AddRecordViewController.swift */; };
 		2D3DAF8626540BE800B8A85E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3DAF8526540BE800B8A85E /* Constants.swift */; };
 		2D3DAF8B265423B900B8A85E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2D3DAF8A265423B900B8A85E /* .gitignore */; };
+		2D3DAF90265558C100B8A85E /* CoreDateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3DAF8F265558C100B8A85E /* CoreDateStore.swift */; };
+		2D3DAF952655739300B8A85E /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3DAF942655739300B8A85E /* CategoryViewModel.swift */; };
+		2D3DAF9A265A8B3900B8A85E /* AddRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3DAF99265A8B3900B8A85E /* AddRecordViewModel.swift */; };
+		2D3DAFA0265A8BBF00B8A85E /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3DAF9F265A8BBF00B8A85E /* Record.swift */; };
 		2D45D60F2652B5F000D0EB44 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D45D60D2652B5F000D0EB44 /* Category+CoreDataClass.swift */; };
 		2D45D6102652B5F000D0EB44 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D45D60E2652B5F000D0EB44 /* Category+CoreDataProperties.swift */; };
+		2D6BDA18265AACA200CA1022 /* Record+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6BDA16265AACA200CA1022 /* Record+CoreDataClass.swift */; };
+		2D6BDA19265AACA200CA1022 /* Record+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6BDA17265AACA200CA1022 /* Record+CoreDataProperties.swift */; };
+		2D77C919265BFAF500B3EB5B /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D77C918265BFAF500B3EB5B /* CalendarViewController.swift */; };
+		2D77C921265BFCEB00B3EB5B /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D77C920265BFCEB00B3EB5B /* CalendarViewModel.swift */; };
 		2D7CFA462651710900B5E169 /* CategoryUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CFA452651710800B5E169 /* CategoryUIView.swift */; };
 		2D7CFA4C265172AB00B5E169 /* CategoryItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CFA4B265172AB00B5E169 /* CategoryItemCollectionViewCell.swift */; };
 		2D8E26BC26496E52007DB982 /* KeyboardUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E26BB26496E52007DB982 /* KeyboardUIView.swift */; };
 		2D8E26C426496E6F007DB982 /* KeyboardUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8E26C326496E6F007DB982 /* KeyboardUIView.xib */; };
 		2D8E26CF264988E8007DB982 /* NumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E26CE264988E8007DB982 /* NumberButton.swift */; };
 		2D8E26D4264AB9EF007DB982 /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E26D3264AB9EF007DB982 /* KeyboardViewModel.swift */; };
+		76A8FE049F27FA7A8B69DA56 /* Pods_iossimplelife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC90D8C0BE4F95AC8AB31223 /* Pods_iossimplelife.framework */; };
+		DB8C8F6BB027DA027FC4D929 /* Pods_iossimplelifeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBBA0C3D19D5321331C36F04 /* Pods_iossimplelifeTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +61,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C792706002A672DC9247A59 /* Pods-iossimplelife-iossimplelifeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iossimplelife-iossimplelifeUITests.release.xcconfig"; path = "Target Support Files/Pods-iossimplelife-iossimplelifeUITests/Pods-iossimplelife-iossimplelifeUITests.release.xcconfig"; sourceTree = "<group>"; };
+		118D76ADE3F8EC291C0EB1AC /* Pods-iossimplelife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iossimplelife.debug.xcconfig"; path = "Target Support Files/Pods-iossimplelife/Pods-iossimplelife.debug.xcconfig"; sourceTree = "<group>"; };
 		2D322A482642EA0500FD1A09 /* iossimplelife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iossimplelife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D322A4B2642EA0500FD1A09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D322A4D2642EA0500FD1A09 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,14 +84,29 @@
 		2D322A9926482C9A00FD1A09 /* AddRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewController.swift; sourceTree = "<group>"; };
 		2D3DAF8526540BE800B8A85E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2D3DAF8A265423B900B8A85E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		2D3DAF8F265558C100B8A85E /* CoreDateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDateStore.swift; sourceTree = "<group>"; };
+		2D3DAF942655739300B8A85E /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		2D3DAF99265A8B3900B8A85E /* AddRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewModel.swift; sourceTree = "<group>"; };
+		2D3DAF9F265A8BBF00B8A85E /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		2D45D60D2652B5F000D0EB44 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2D45D60E2652B5F000D0EB44 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2D6BDA16265AACA200CA1022 /* Record+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Record+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2D6BDA17265AACA200CA1022 /* Record+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Record+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2D77C918265BFAF500B3EB5B /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		2D77C920265BFCEB00B3EB5B /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		2D7CFA452651710800B5E169 /* CategoryUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryUIView.swift; sourceTree = "<group>"; };
 		2D7CFA4B265172AB00B5E169 /* CategoryItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		2D8E26BB26496E52007DB982 /* KeyboardUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardUIView.swift; sourceTree = "<group>"; };
 		2D8E26C326496E6F007DB982 /* KeyboardUIView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardUIView.xib; sourceTree = "<group>"; };
 		2D8E26CE264988E8007DB982 /* NumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberButton.swift; sourceTree = "<group>"; };
 		2D8E26D3264AB9EF007DB982 /* KeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModel.swift; sourceTree = "<group>"; };
+		54A5FEED6E1C8A860999B379 /* Pods-iossimplelife-iossimplelifeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iossimplelife-iossimplelifeUITests.debug.xcconfig"; path = "Target Support Files/Pods-iossimplelife-iossimplelifeUITests/Pods-iossimplelife-iossimplelifeUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AC8D5CD1780CAE38E48DD235 /* Pods-iossimplelifeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iossimplelifeTests.release.xcconfig"; path = "Target Support Files/Pods-iossimplelifeTests/Pods-iossimplelifeTests.release.xcconfig"; sourceTree = "<group>"; };
+		B371F76807961ABC7907CBC0 /* Pods-iossimplelife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iossimplelife.release.xcconfig"; path = "Target Support Files/Pods-iossimplelife/Pods-iossimplelife.release.xcconfig"; sourceTree = "<group>"; };
+		CBBA0C3D19D5321331C36F04 /* Pods_iossimplelifeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iossimplelifeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D069E9962E0708277DBDF616 /* Pods_iossimplelife_iossimplelifeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iossimplelife_iossimplelifeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6C9862D9AD9F9D8EEEE1677 /* Pods-iossimplelifeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iossimplelifeTests.debug.xcconfig"; path = "Target Support Files/Pods-iossimplelifeTests/Pods-iossimplelifeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EC90D8C0BE4F95AC8AB31223 /* Pods_iossimplelife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iossimplelife.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76A8FE049F27FA7A8B69DA56 /* Pods_iossimplelife.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB8C8F6BB027DA027FC4D929 /* Pods_iossimplelifeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,12 +130,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0182FEAEB81ED5D4A8090C91 /* Pods_iossimplelife_iossimplelifeUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19020C0CE7A0FA8890C12DE1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				118D76ADE3F8EC291C0EB1AC /* Pods-iossimplelife.debug.xcconfig */,
+				B371F76807961ABC7907CBC0 /* Pods-iossimplelife.release.xcconfig */,
+				54A5FEED6E1C8A860999B379 /* Pods-iossimplelife-iossimplelifeUITests.debug.xcconfig */,
+				0C792706002A672DC9247A59 /* Pods-iossimplelife-iossimplelifeUITests.release.xcconfig */,
+				E6C9862D9AD9F9D8EEEE1677 /* Pods-iossimplelifeTests.debug.xcconfig */,
+				AC8D5CD1780CAE38E48DD235 /* Pods-iossimplelifeTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		2D322A3F2642EA0500FD1A09 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +158,8 @@
 				2D322A642642EA0800FD1A09 /* iossimplelifeTests */,
 				2D322A6F2642EA0800FD1A09 /* iossimplelifeUITests */,
 				2D322A492642EA0500FD1A09 /* Products */,
+				19020C0CE7A0FA8890C12DE1 /* Pods */,
+				AF50DB5097779DC28DCA46D6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,7 +176,7 @@
 		2D322A4A2642EA0500FD1A09 /* iossimplelife */ = {
 			isa = PBXGroup;
 			children = (
-				2D45D6142652B61200D0EB44 /* Category */,
+				2D3DAF9E265A8B9400B8A85E /* Model */,
 				2D322A822642EB3100FD1A09 /* View */,
 				2D322A812642EB2700FD1A09 /* ViewModel */,
 				2D322A4B2642EA0500FD1A09 /* AppDelegate.swift */,
@@ -141,6 +187,7 @@
 				2D322A542642EA0500FD1A09 /* iossimplelife.xcdatamodeld */,
 				2D322A862642ED2200FD1A09 /* extensions.swift */,
 				2D3DAF8526540BE800B8A85E /* Constants.swift */,
+				2D3DAF8F265558C100B8A85E /* CoreDateStore.swift */,
 			);
 			path = iossimplelife;
 			sourceTree = "<group>";
@@ -166,8 +213,10 @@
 		2D322A812642EB2700FD1A09 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2D77C925265BFCF400B3EB5B /* UIView */,
 				2D322A8B2642EDC800FD1A09 /* MainViewModel.swift */,
-				2D8E26D3264AB9EF007DB982 /* KeyboardViewModel.swift */,
+				2D3DAF99265A8B3900B8A85E /* AddRecordViewModel.swift */,
+				2D77C920265BFCEB00B3EB5B /* CalendarViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -175,24 +224,55 @@
 		2D322A822642EB3100FD1A09 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2D6BDA20265BE82100CA1022 /* UIVIew */,
 				2D7CFA4A2651728F00B5E169 /* Cells */,
-				2D8E26D82651535A007DB982 /* CustomView */,
+				2D8E26D82651535A007DB982 /* CustomUI */,
 				2D322A512642EA0500FD1A09 /* Main.storyboard */,
+				2D77C918265BFAF500B3EB5B /* CalendarViewController.swift */,
 				2D322A4F2642EA0500FD1A09 /* MainViewController.swift */,
 				2D322A9926482C9A00FD1A09 /* AddRecordViewController.swift */,
-				2D322A932642F7BA00FD1A09 /* MainMoneyUIView.swift */,
-				2D7CFA452651710800B5E169 /* CategoryUIView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		2D45D6142652B61200D0EB44 /* Category */ = {
+		2D3DAF9E265A8B9400B8A85E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2D6BDA0F265AAA9400CA1022 /* CoreData */,
+				2D3DAF9F265A8BBF00B8A85E /* Record.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2D6BDA0F265AAA9400CA1022 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				2D6BDA16265AACA200CA1022 /* Record+CoreDataClass.swift */,
+				2D6BDA17265AACA200CA1022 /* Record+CoreDataProperties.swift */,
 				2D45D60D2652B5F000D0EB44 /* Category+CoreDataClass.swift */,
 				2D45D60E2652B5F000D0EB44 /* Category+CoreDataProperties.swift */,
 			);
-			path = Category;
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		2D6BDA20265BE82100CA1022 /* UIVIew */ = {
+			isa = PBXGroup;
+			children = (
+				2D8E26C326496E6F007DB982 /* KeyboardUIView.xib */,
+				2D8E26BB26496E52007DB982 /* KeyboardUIView.swift */,
+				2D322A932642F7BA00FD1A09 /* MainMoneyUIView.swift */,
+				2D7CFA452651710800B5E169 /* CategoryUIView.swift */,
+			);
+			path = UIVIew;
+			sourceTree = "<group>";
+		};
+		2D77C925265BFCF400B3EB5B /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				2D8E26D3264AB9EF007DB982 /* KeyboardViewModel.swift */,
+				2D3DAF942655739300B8A85E /* CategoryViewModel.swift */,
+			);
+			path = UIView;
 			sourceTree = "<group>";
 		};
 		2D7CFA4A2651728F00B5E169 /* Cells */ = {
@@ -203,14 +283,22 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		2D8E26D82651535A007DB982 /* CustomView */ = {
+		2D8E26D82651535A007DB982 /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
-				2D8E26C326496E6F007DB982 /* KeyboardUIView.xib */,
-				2D8E26BB26496E52007DB982 /* KeyboardUIView.swift */,
 				2D8E26CE264988E8007DB982 /* NumberButton.swift */,
 			);
-			path = CustomView;
+			path = CustomUI;
+			sourceTree = "<group>";
+		};
+		AF50DB5097779DC28DCA46D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EC90D8C0BE4F95AC8AB31223 /* Pods_iossimplelife.framework */,
+				D069E9962E0708277DBDF616 /* Pods_iossimplelife_iossimplelifeUITests.framework */,
+				CBBA0C3D19D5321331C36F04 /* Pods_iossimplelifeTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,9 +308,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D322A752642EA0800FD1A09 /* Build configuration list for PBXNativeTarget "iossimplelife" */;
 			buildPhases = (
+				8A1F7D14CF2BBA9D137B7DEE /* [CP] Check Pods Manifest.lock */,
 				2D322A442642EA0500FD1A09 /* Sources */,
 				2D322A452642EA0500FD1A09 /* Frameworks */,
 				2D322A462642EA0500FD1A09 /* Resources */,
+				FAEEB6B0B4F969E45B92D0BB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -237,6 +327,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D322A782642EA0800FD1A09 /* Build configuration list for PBXNativeTarget "iossimplelifeTests" */;
 			buildPhases = (
+				19E1CA3014E8ADDE3DEF329C /* [CP] Check Pods Manifest.lock */,
 				2D322A5D2642EA0800FD1A09 /* Sources */,
 				2D322A5E2642EA0800FD1A09 /* Frameworks */,
 				2D322A5F2642EA0800FD1A09 /* Resources */,
@@ -255,9 +346,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D322A7B2642EA0800FD1A09 /* Build configuration list for PBXNativeTarget "iossimplelifeUITests" */;
 			buildPhases = (
+				08F0BE1717A5D28D40BCC9F5 /* [CP] Check Pods Manifest.lock */,
 				2D322A682642EA0800FD1A09 /* Sources */,
 				2D322A692642EA0800FD1A09 /* Frameworks */,
 				2D322A6A2642EA0800FD1A09 /* Resources */,
+				D8A2BE7E2FE467D85C8290A9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -340,26 +433,137 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		08F0BE1717A5D28D40BCC9F5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iossimplelife-iossimplelifeUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		19E1CA3014E8ADDE3DEF329C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iossimplelifeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8A1F7D14CF2BBA9D137B7DEE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iossimplelife-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8A2BE7E2FE467D85C8290A9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iossimplelife-iossimplelifeUITests/Pods-iossimplelife-iossimplelifeUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iossimplelife-iossimplelifeUITests/Pods-iossimplelife-iossimplelifeUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iossimplelife-iossimplelifeUITests/Pods-iossimplelife-iossimplelifeUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FAEEB6B0B4F969E45B92D0BB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iossimplelife/Pods-iossimplelife-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iossimplelife/Pods-iossimplelife-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iossimplelife/Pods-iossimplelife-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2D322A442642EA0500FD1A09 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D77C921265BFCEB00B3EB5B /* CalendarViewModel.swift in Sources */,
+				2D77C919265BFAF500B3EB5B /* CalendarViewController.swift in Sources */,
 				2D322A872642ED2200FD1A09 /* extensions.swift in Sources */,
 				2D322A502642EA0500FD1A09 /* MainViewController.swift in Sources */,
+				2D3DAFA0265A8BBF00B8A85E /* Record.swift in Sources */,
+				2D6BDA18265AACA200CA1022 /* Record+CoreDataClass.swift in Sources */,
 				2D7CFA462651710900B5E169 /* CategoryUIView.swift in Sources */,
 				2D8E26BC26496E52007DB982 /* KeyboardUIView.swift in Sources */,
 				2D8E26D4264AB9EF007DB982 /* KeyboardViewModel.swift in Sources */,
 				2D7CFA4C265172AB00B5E169 /* CategoryItemCollectionViewCell.swift in Sources */,
+				2D6BDA19265AACA200CA1022 /* Record+CoreDataProperties.swift in Sources */,
 				2D322A4C2642EA0500FD1A09 /* AppDelegate.swift in Sources */,
 				2D3DAF8626540BE800B8A85E /* Constants.swift in Sources */,
 				2D45D6102652B5F000D0EB44 /* Category+CoreDataProperties.swift in Sources */,
 				2D322A4E2642EA0500FD1A09 /* SceneDelegate.swift in Sources */,
 				2D322A942642F7BA00FD1A09 /* MainMoneyUIView.swift in Sources */,
+				2D3DAF9A265A8B3900B8A85E /* AddRecordViewModel.swift in Sources */,
 				2D45D60F2652B5F000D0EB44 /* Category+CoreDataClass.swift in Sources */,
+				2D3DAF90265558C100B8A85E /* CoreDateStore.swift in Sources */,
 				2D322A562642EA0500FD1A09 /* iossimplelife.xcdatamodeld in Sources */,
 				2D322A8C2642EDC800FD1A09 /* MainViewModel.swift in Sources */,
 				2D8E26CF264988E8007DB982 /* NumberButton.swift in Sources */,
+				2D3DAF952655739300B8A85E /* CategoryViewModel.swift in Sources */,
 				2D322A9A26482C9A00FD1A09 /* AddRecordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,6 +737,7 @@
 		};
 		2D322A762642EA0800FD1A09 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 118D76ADE3F8EC291C0EB1AC /* Pods-iossimplelife.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -552,6 +757,7 @@
 		};
 		2D322A772642EA0800FD1A09 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B371F76807961ABC7907CBC0 /* Pods-iossimplelife.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -571,6 +777,7 @@
 		};
 		2D322A792642EA0800FD1A09 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6C9862D9AD9F9D8EEEE1677 /* Pods-iossimplelifeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -593,6 +800,7 @@
 		};
 		2D322A7A2642EA0800FD1A09 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC8D5CD1780CAE38E48DD235 /* Pods-iossimplelifeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -615,6 +823,7 @@
 		};
 		2D322A7C2642EA0800FD1A09 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54A5FEED6E1C8A860999B379 /* Pods-iossimplelife-iossimplelifeUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -635,6 +844,7 @@
 		};
 		2D322A7D2642EA0800FD1A09 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C792706002A672DC9247A59 /* Pods-iossimplelife-iossimplelifeUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

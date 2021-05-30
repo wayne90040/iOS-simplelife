@@ -17,9 +17,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         if UserDefaults.isFirstLaunch() {
-            
+            setDefaultCateInCoreData()
         }
+        
         return true
+    }
+    
+    private func setDefaultCateInCoreData() {
+        CoreDataStore().insertCategory(name: "早餐", imageString: .breakfast)
+        CoreDataStore().insertCategory(name: "午餐", imageString: .lunch)
+        CoreDataStore().insertCategory(name: "點心", imageString: .snack)
+        CoreDataStore().insertCategory(name: "晚餐", imageString: .dinner)
+        CoreDataStore().insertCategory(name: "禮物", imageString: .gift)
+        CoreDataStore().insertCategory(name: "飲料", imageString: .drink)
+        CoreDataStore().insertCategory(name: "娛樂", imageString: .game)
+        CoreDataStore().insertCategory(name: "購物", imageString: .shopping)
+        CoreDataStore().insertCategory(name: "日用品", imageString: .lifeshopping)
+        CoreDataStore().insertCategory(name: "醫療", imageString: .hospital)
+        CoreDataStore().insertCategory(name: "社交", imageString: .social)
+        CoreDataStore().insertCategory(name: "房租", imageString: .house)
+        CoreDataStore().insertCategory(name: "交通", imageString: .transport)
+        CoreDataStore().insertCategory(name: "投資", imageString: .investment)
+        CoreDataStore().insertCategory(name: "其他", imageString: .other)
     }
 
     
@@ -81,6 +100,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 

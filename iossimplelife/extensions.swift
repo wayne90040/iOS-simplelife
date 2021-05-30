@@ -56,7 +56,7 @@ extension UIViewController {
 }
 
 extension UserDefaults {
-    enum AppConfig: String {
+    enum AppConfig: String {  // UserDefault Key
         case hasBeenLaunch
     }
     
@@ -74,5 +74,30 @@ extension UserDefaults {
     
     static func bool(forKey key: AppConfig) -> Bool? {
         UserDefaults.standard.bool(forKey: key.rawValue)
+    }
+}
+
+extension UIButton {
+    
+    // image & label 垂直置中
+    func centerVertically(padding: CGFloat = 6.0) {
+        
+        guard let imageViewSize = self.imageView?.frame.size,
+              let titleLabelSize = self.titleLabel?.frame.size else {
+            return
+        }
+        
+        let totalHeight = imageViewSize.height + titleLabelSize.height + padding
+        
+        self.imageEdgeInsets = UIEdgeInsets(top: -(totalHeight - imageViewSize.height),
+                                            left: 0.0,
+                                            bottom: 0.0,
+                                            right: -titleLabelSize.width)
+        
+        self.titleEdgeInsets = UIEdgeInsets(top: 0.0,
+                                            left: -(imageViewSize.width),
+                                            bottom: -(totalHeight - titleLabelSize.height),
+                                            right: 0.0)
+            
     }
 }

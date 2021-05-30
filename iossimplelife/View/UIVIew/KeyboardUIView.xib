@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KeyboardUIView" customModule="iossimplelife" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="Jda-C2-wB0" id="ogT-vn-hef"/>
+                <outlet property="calendarButton" destination="LvW-9R-CWV" id="0m0-9N-ZQL"/>
                 <outlet property="clearButton" destination="Kl3-BH-ubq" id="iFR-7u-fWL"/>
                 <outlet property="dividedButton" destination="kwY-Qz-m6J" id="s6i-vW-JZB"/>
                 <outlet property="gobackButton" destination="TZ4-ca-FHw" id="jr9-DN-AwL"/>
@@ -42,7 +43,36 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YtN-ZQ-pZV">
                     <rect key="frame" x="0.0" y="72.333333333333343" width="448" height="72.333333333333343"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HVe-OP-2vg">
+                            <rect key="frame" x="10" y="3" width="428" height="66.333333333333329"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmL-3W-QhK">
+                                    <rect key="frame" x="0.0" y="18" width="46" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Fl-jC-RdW">
+                                    <rect key="frame" x="382" y="18" width="46" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LvW-9R-CWV">
+                                    <rect key="frame" x="191" y="18" width="46" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="HVe-OP-2vg" firstAttribute="leading" secondItem="YtN-ZQ-pZV" secondAttribute="leading" constant="10" id="MOZ-DB-Xau"/>
+                        <constraint firstAttribute="trailing" secondItem="HVe-OP-2vg" secondAttribute="trailing" constant="10" id="lwa-zh-Kvq"/>
+                        <constraint firstItem="HVe-OP-2vg" firstAttribute="top" secondItem="YtN-ZQ-pZV" secondAttribute="top" constant="3" id="tjo-zI-TBY"/>
+                        <constraint firstAttribute="bottom" secondItem="HVe-OP-2vg" secondAttribute="bottom" constant="3" id="upp-xc-rfB"/>
+                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N32-cb-3DA">
                     <rect key="frame" x="0.0" y="144.66666666666666" width="448" height="361.33333333333337"/>

@@ -36,7 +36,6 @@ class KeyboardViewModel {
         }
         
         numB = Double(res) ?? 0
-        
         delegate?.keyboardView(self, didTappedNumber: res)
     }
     
@@ -72,7 +71,6 @@ class KeyboardViewModel {
     }
     
     public func didTappedBackButton() {
-       
         if floor(numB) == numB {
             numB = floor(numB / 10)
             delegate?.keyboardView(self, didTappedBack: "\(Int(numB))")
@@ -85,5 +83,9 @@ class KeyboardViewModel {
     public func didTappedCleanButton() {
         numA = 0.0
         numB = 0.0
+    }
+    
+    public func didTappedCalendarButton() {
+        
     }
 }

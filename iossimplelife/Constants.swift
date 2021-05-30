@@ -6,3 +6,22 @@
 //
 
 import Foundation
+
+enum CategoryIcons: String {
+    case add
+    case breakfast
+    case dinner
+    case game
+    case gift
+    case hospital
+    case house
+    case investment
+    case lifeshopping
+    case lunch
+    case other
+    case shopping
+    case snack
+    case social
+    case transport
+    case drink
+}

@@ -7,12 +7,16 @@
 
 import UIKit
 
+protocol KeyboardUIViewDelegate: class {
+    func keyboardView(_ view: KeyboardUIView, didTappedSave num: String, note: String)
+    func keyboardView(_ view: KeyboardUIView, didTappedCalendar day: String)
+}
+
 enum OperationType {
     case plus, minus, multiply, divided, none
 }
 
 class KeyboardUIView: UIView {
-    
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var noteTextField: UITextField!
     @IBOutlet weak var iconImageView: UIImageView!
@@ -36,8 +40,11 @@ class KeyboardUIView: UIView {
     @IBOutlet weak var multiplyButton: NumberButton!
     @IBOutlet weak var plusButton: NumberButton!
     @IBOutlet weak var minusButton: NumberButton!
+    @IBOutlet weak var calendarButton: UIButton!
     
     private var viewModel: KeyboardViewModel?
+    weak var delegate: KeyboardUIViewDelegate?
+    
 //    private var operationType: OperationType = .none
     
     // tag 1 to 11
@@ -86,6 +93,7 @@ class KeyboardUIView: UIView {
         clearButton.addTarget(self, action: #selector(didTappedClearButton), for: .touchUpInside)
         okButton.addTarget(self, action: #selector(didTappedOKButton), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(didTappedBackButton), for: .touchUpInside)
+        calendarButton.addTarget(self, action: #selector(didTappedCalendarButton), for: .touchUpInside)
     }
     
     // MARK: - Button Action
@@ -112,16 +120,29 @@ class KeyboardUIView: UIView {
     }
     
     @objc func didTappedOKButton() {
-        viewModel?.didTappedOKButton()
+        if okButton.titleLabel?.text == "="{
+            /// 計算等於
+            viewModel?.didTappedOKButton()
+        }
+        else {
+            /// Save
+            guard let number = numberLabel.text else {
+                return
+            }
+            delegate?.keyboardView(self, didTappedSave: number, note: "")
+        }
     }
     
     @objc func didTappedBackButton() {
         viewModel?.didTappedBackButton()
     }
+    
+    @objc func didTappedCalendarButton() {
+        delegate?.keyboardView(self, didTappedCalendar: "")
+    }
 }
 
 extension KeyboardUIView: KeyboardViewModelDelegate {
-    
     func keyboardView(_ viewModel: KeyboardViewModel, didTappedNumber number: String) {
         numberLabel.text = "\(number)"
     }

@@ -17,7 +17,7 @@ extension Category {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var imageUrl: Data?
+    @NSManaged public var imageUrl: String?
 
 }
 
