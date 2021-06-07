@@ -42,7 +42,7 @@ extension UIView {
 
 extension UIViewController {
     
-    // 取得 Navigation Heigh
+    // MARK: Get Top Bar Height
     public var topBarHeight: CGFloat {
         if #available(iOS 13.0, *) {
             return (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
@@ -52,6 +52,15 @@ extension UIViewController {
             return UIApplication.shared.statusBarFrame.size.height +
                 (self.navigationController?.navigationBar.frame.height ?? 0.0)
         }
+    }
+    
+    // MARK: AlertViewController
+    public func showAlert(title: String, message: String, actions: [UIAlertAction]) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        actions.forEach() {
+            alert.addAction($0)
+        }
+        self.present(alert, animated: true)
     }
 }
 
@@ -79,7 +88,7 @@ extension UserDefaults {
 
 extension UIButton {
     
-    // image & label 垂直置中
+    // MARK: Image n Label 垂直置中
     func centerVertically(padding: CGFloat = 6.0) {
         
         guard let imageViewSize = self.imageView?.frame.size,
@@ -98,6 +107,5 @@ extension UIButton {
                                             left: -(imageViewSize.width),
                                             bottom: -(totalHeight - titleLabelSize.height),
                                             right: 0.0)
-            
     }
 }

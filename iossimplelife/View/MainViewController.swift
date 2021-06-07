@@ -30,6 +30,8 @@ class MainViewController: UIViewController {
     
     private let mainTableView: UITableView = {
         let tableView = UITableView()
+        tableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.identifier)
+        tableView.rowHeight = 60
         return tableView
     }()
     
@@ -42,7 +44,7 @@ class MainViewController: UIViewController {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         viewModel = MainViewModel(delegate: self)
-        view.addSubviews(addButton, incomeView, costView, mainTableView)
+        view.addSubviews(incomeView, costView, mainTableView, addButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +68,11 @@ class MainViewController: UIViewController {
         
         costView.frame = CGRect(x: 0, y: topBarHeight, width: viewWidth, height: viewHeight)
         incomeView.frame = CGRect(x: viewWidth, y: topBarHeight, width: viewWidth, height: viewHeight)
+        
+        mainTableView.frame = CGRect(x: 0,
+                                     y: costView.bottom,
+                                     width: view.width,
+                                     height: view.height - costView.height)
     }
     
     @objc func didTappedAddButton () {
@@ -74,23 +81,44 @@ class MainViewController: UIViewController {
     }
 }
 
+// MARK: TableView
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.identifier,
+                                                 for: indexPath) as! MainTableViewCell
+        cell.configure(with: models[indexPath.row])
+        return cell
+    }
+    
+    // 開啟 TableView 側滑功能
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle{
+        case .delete:
+            let model = models[indexPath.row]
+            let cancel = UIAlertAction(title: "取消", style: .cancel)
+            let confirm = UIAlertAction(title: "確定", style: .default) { [weak self] _ in
+                self?.viewModel?.deleteRecord(record: model)
+            }
+            
+            self.showAlert(title: "確認刪除", message: "確定要刪除嗎？", actions: [cancel, confirm])
+            
+        default:
+            break
+        }
     }
 }
 
-
+// MARK: - MainViewModel
 extension MainViewController: MainViewModelDelegate {
-    func mainView(_ viewModel: MainViewModel, fetchAllRecords records: [Record]) {
+    func mainView(_ viewModel: MainViewModel, editStyle style: CoreDateEditStyle, records: [Record]) {
         self.models = records
+        DispatchQueue.main.async {
+            self.mainTableView.reloadData()
+        }
     }
 }

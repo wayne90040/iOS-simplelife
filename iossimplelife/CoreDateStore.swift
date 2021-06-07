@@ -9,6 +9,11 @@ import Foundation
 import CoreData
 import os
 
+enum CoreDateEditStyle {
+    case read
+    case delete
+}
+
 class CoreDataStore {
     
     var persistentContainer: NSPersistentCloudKitContainer
@@ -64,10 +69,13 @@ class CoreDataStore {
 // MARK: - Category Core Data
 extension CoreDataStore {
     // C
-    func insertCategory(name: String, imageString: CategoryIcons, completion: (@escaping(Bool) -> Void) = {_ in }) {
+    func insertCategory(name: String, imageString: CategoryIcons, note: String = "", isCost: Bool,
+                        completion: (@escaping(Bool) -> Void) = {_ in}) {
         let newItem: Category = Category(context: context)
         newItem.name = name
         newItem.imageUrl = imageString.rawValue
+        newItem.isCost = isCost
+        newItem.note = note
         
         do {
             try context.save()
@@ -79,13 +87,27 @@ extension CoreDataStore {
     }
     
     // R
-    func fetchAllCategories() -> [Category] {
+    func fetchCategories(predicate: NSPredicate? = nil) -> [Category] {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Category")
+        if let predicate = predicate {
+            request.predicate = predicate
+        }
+        
         var result = [Category]()
+       
         do {
-            result = try context.fetch(Category.fetchRequest())
+            result = try context.fetch(request) as! [Category]
         } catch {
             print("fetchAllCategories: \(error)")
         }
+        
+//        var result = [Category]()
+//
+//        do {
+//            result = try context.fetch(Category.fetchRequest())
+//        } catch {
+//            print("fetchAllCategories: \(error)")
+//        }
         
         return result
     }
@@ -151,6 +173,10 @@ extension CoreDataStore {
         return results
     }
     
+    func fetchDaysOfRecords() {
+        
+    }
+    
     // U
     func updateRecord(record: Record, category: String, price: String, note: String, completion: @escaping(Bool) -> Void) {
         record.category = category
@@ -177,5 +203,11 @@ extension CoreDataStore {
             print("deleteRecord: \(error)")
             completion(false)
         }
+    }
+}
+
+extension CoreDataStore {
+    enum CoreDataStoreError: Error {
+        
     }
 }

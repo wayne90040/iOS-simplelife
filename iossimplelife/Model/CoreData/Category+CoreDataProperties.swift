@@ -18,7 +18,8 @@ extension Category {
 
     @NSManaged public var name: String?
     @NSManaged public var imageUrl: String?
-
+    @NSManaged public var isCost: Bool
+    @NSManaged public var note: String?
 }
 
 extension Category : Identifiable {

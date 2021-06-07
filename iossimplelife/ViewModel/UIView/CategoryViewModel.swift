@@ -20,7 +20,7 @@ class CategoryViewModel {
         self.delegate = delegate
     }
     
-    public func fetchAllCategory(){
-        delegate?.categoryView(self, fetchAllCategory: coreDataStore.fetchAllCategories())
+    public func fetchAllCategory(predicate: NSPredicate?){
+        delegate?.categoryView(self, fetchAllCategory: coreDataStore.fetchCategories(predicate: predicate))
     }
 }

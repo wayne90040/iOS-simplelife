@@ -16,6 +16,7 @@
                 <outlet property="dividedButton" destination="kwY-Qz-m6J" id="s6i-vW-JZB"/>
                 <outlet property="gobackButton" destination="TZ4-ca-FHw" id="jr9-DN-AwL"/>
                 <outlet property="iconImageView" destination="gx3-pc-s0E" id="XWa-GN-v3B"/>
+                <outlet property="leftArrowButton" destination="dmL-3W-QhK" id="9lF-xQ-cWp"/>
                 <outlet property="minusButton" destination="G6k-kd-JM0" id="ptd-oH-zhx"/>
                 <outlet property="multiplyButton" destination="QWN-gU-mpU" id="S5F-la-aQq"/>
                 <outlet property="noteTextField" destination="bRC-yd-Jd1" id="vZH-ar-FyY"/>
@@ -34,6 +35,7 @@
                 <outlet property="numberLabel" destination="avc-dW-ldr" id="ECR-bb-0kp"/>
                 <outlet property="okButton" destination="c3M-cR-VsN" id="2rg-9M-gqX"/>
                 <outlet property="plusButton" destination="UFm-fo-RC6" id="JBn-f4-t2T"/>
+                <outlet property="rightArrowButton" destination="5Fl-jC-RdW" id="uj0-Ja-PKb"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -47,23 +49,35 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HVe-OP-2vg">
                             <rect key="frame" x="10" y="3" width="428" height="66.333333333333329"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmL-3W-QhK">
-                                    <rect key="frame" x="0.0" y="18" width="46" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmL-3W-QhK">
+                                    <rect key="frame" x="9.9999999999999982" y="22" width="17.333333333333329" height="22"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" image="arrowtriangle.left.fill" catalog="system"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Fl-jC-RdW">
-                                    <rect key="frame" x="382" y="18" width="46" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Fl-jC-RdW">
+                                    <rect key="frame" x="400.66666666666669" y="22" width="17.333333333333314" height="22"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" image="arrowtriangle.right.fill" catalog="system"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LvW-9R-CWV">
-                                    <rect key="frame" x="191" y="18" width="46" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LvW-9R-CWV">
+                                    <rect key="frame" x="166.33333333333334" y="24" width="95.666666666666657" height="18.333333333333329"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="2021/06/05" image="calendar" catalog="system">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="dmL-3W-QhK" firstAttribute="leading" secondItem="HVe-OP-2vg" secondAttribute="leading" constant="10" id="1T9-By-W5I"/>
+                                <constraint firstAttribute="trailing" secondItem="5Fl-jC-RdW" secondAttribute="trailing" constant="10" id="B7y-kL-Xcf"/>
+                                <constraint firstItem="5Fl-jC-RdW" firstAttribute="centerY" secondItem="HVe-OP-2vg" secondAttribute="centerY" id="Tjl-4U-2jB"/>
+                                <constraint firstItem="LvW-9R-CWV" firstAttribute="centerY" secondItem="HVe-OP-2vg" secondAttribute="centerY" id="f1T-v1-x3K"/>
+                                <constraint firstItem="LvW-9R-CWV" firstAttribute="centerX" secondItem="HVe-OP-2vg" secondAttribute="centerX" id="jca-kY-XZ6"/>
+                                <constraint firstItem="dmL-3W-QhK" firstAttribute="centerY" secondItem="HVe-OP-2vg" secondAttribute="centerY" id="ljI-8J-2qT"/>
+                            </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -299,12 +313,12 @@
                             </constraints>
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="備註" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bRC-yd-Jd1">
-                            <rect key="frame" x="72.333333333333329" y="0.0" width="187.66666666666669" height="72.333333333333329"/>
+                            <rect key="frame" x="72.333333333333329" y="0.0" width="185.33333333333337" height="72.333333333333329"/>
                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avc-dW-ldr">
-                            <rect key="frame" x="260" y="0.0" width="188" height="72.333333333333329"/>
+                            <rect key="frame" x="257.66666666666669" y="0.0" width="185.33333333333331" height="72.333333333333329"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -322,7 +336,7 @@
                         <constraint firstAttribute="bottom" secondItem="gx3-pc-s0E" secondAttribute="bottom" id="OyM-Qu-EBh"/>
                         <constraint firstItem="bRC-yd-Jd1" firstAttribute="leading" secondItem="gx3-pc-s0E" secondAttribute="trailing" id="U7G-jJ-jXp"/>
                         <constraint firstItem="bRC-yd-Jd1" firstAttribute="top" secondItem="Ca8-g0-mMP" secondAttribute="top" id="YOE-pF-pJV"/>
-                        <constraint firstAttribute="trailing" secondItem="avc-dW-ldr" secondAttribute="trailing" id="bl0-cA-aZs"/>
+                        <constraint firstAttribute="trailing" secondItem="avc-dW-ldr" secondAttribute="trailing" constant="5" id="bl0-cA-aZs"/>
                     </constraints>
                 </view>
             </subviews>
@@ -411,6 +425,9 @@
         </designable>
     </designables>
     <resources>
+        <image name="arrowtriangle.left.fill" catalog="system" width="128" height="113"/>
+        <image name="arrowtriangle.right.fill" catalog="system" width="128" height="113"/>
+        <image name="calendar" catalog="system" width="128" height="106"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

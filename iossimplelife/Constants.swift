@@ -24,4 +24,7 @@ enum CategoryIcons: String {
     case social
     case transport
     case drink
+    case bonus
+    case investment_
+    case salary
 }

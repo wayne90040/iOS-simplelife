@@ -24,21 +24,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setDefaultCateInCoreData() {
-        CoreDataStore().insertCategory(name: "早餐", imageString: .breakfast)
-        CoreDataStore().insertCategory(name: "午餐", imageString: .lunch)
-        CoreDataStore().insertCategory(name: "點心", imageString: .snack)
-        CoreDataStore().insertCategory(name: "晚餐", imageString: .dinner)
-        CoreDataStore().insertCategory(name: "禮物", imageString: .gift)
-        CoreDataStore().insertCategory(name: "飲料", imageString: .drink)
-        CoreDataStore().insertCategory(name: "娛樂", imageString: .game)
-        CoreDataStore().insertCategory(name: "購物", imageString: .shopping)
-        CoreDataStore().insertCategory(name: "日用品", imageString: .lifeshopping)
-        CoreDataStore().insertCategory(name: "醫療", imageString: .hospital)
-        CoreDataStore().insertCategory(name: "社交", imageString: .social)
-        CoreDataStore().insertCategory(name: "房租", imageString: .house)
-        CoreDataStore().insertCategory(name: "交通", imageString: .transport)
-        CoreDataStore().insertCategory(name: "投資", imageString: .investment)
-        CoreDataStore().insertCategory(name: "其他", imageString: .other)
+        CoreDataStore().insertCategory(name: "早餐", imageString: .breakfast, isCost: true)
+        CoreDataStore().insertCategory(name: "午餐", imageString: .lunch, isCost: true)
+        CoreDataStore().insertCategory(name: "點心", imageString: .snack, isCost: true)
+        CoreDataStore().insertCategory(name: "晚餐", imageString: .dinner, isCost: true)
+        CoreDataStore().insertCategory(name: "禮物", imageString: .gift, isCost: true)
+        CoreDataStore().insertCategory(name: "飲料", imageString: .drink, isCost: true)
+        CoreDataStore().insertCategory(name: "娛樂", imageString: .game, isCost: true)
+        CoreDataStore().insertCategory(name: "購物", imageString: .shopping, isCost: true)
+        CoreDataStore().insertCategory(name: "日用品", imageString: .lifeshopping, isCost: true)
+        CoreDataStore().insertCategory(name: "醫療", imageString: .hospital, isCost: true)
+        CoreDataStore().insertCategory(name: "社交", imageString: .social, isCost: true)
+        CoreDataStore().insertCategory(name: "房租", imageString: .house, isCost: true)
+        CoreDataStore().insertCategory(name: "交通", imageString: .transport, isCost: true)
+        CoreDataStore().insertCategory(name: "投資", imageString: .investment, isCost: true)
+        CoreDataStore().insertCategory(name: "其他", imageString: .other, isCost: true)
+        
+        CoreDataStore().insertCategory(name: "薪水", imageString: .salary, isCost: false)
+        CoreDataStore().insertCategory(name: "獎金", imageString: .bonus, isCost: false)
+        CoreDataStore().insertCategory(name: "投資", imageString: .investment_, isCost: false)
+        CoreDataStore().insertCategory(name: "其他", imageString: .other, isCost: false)
     }
 
     

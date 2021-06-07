@@ -26,7 +26,6 @@
 		2D3DAF90265558C100B8A85E /* CoreDateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3DAF8F265558C100B8A85E /* CoreDateStore.swift */; };
 		2D3DAF952655739300B8A85E /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3DAF942655739300B8A85E /* CategoryViewModel.swift */; };
 		2D3DAF9A265A8B3900B8A85E /* AddRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3DAF99265A8B3900B8A85E /* AddRecordViewModel.swift */; };
-		2D3DAFA0265A8BBF00B8A85E /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3DAF9F265A8BBF00B8A85E /* Record.swift */; };
 		2D45D60F2652B5F000D0EB44 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D45D60D2652B5F000D0EB44 /* Category+CoreDataClass.swift */; };
 		2D45D6102652B5F000D0EB44 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D45D60E2652B5F000D0EB44 /* Category+CoreDataProperties.swift */; };
 		2D6BDA18265AACA200CA1022 /* Record+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6BDA16265AACA200CA1022 /* Record+CoreDataClass.swift */; };
@@ -39,6 +38,7 @@
 		2D8E26C426496E6F007DB982 /* KeyboardUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8E26C326496E6F007DB982 /* KeyboardUIView.xib */; };
 		2D8E26CF264988E8007DB982 /* NumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E26CE264988E8007DB982 /* NumberButton.swift */; };
 		2D8E26D4264AB9EF007DB982 /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E26D3264AB9EF007DB982 /* KeyboardViewModel.swift */; };
+		2DE351DF2663E60800B650BE /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE351DE2663E60800B650BE /* MainTableViewCell.swift */; };
 		76A8FE049F27FA7A8B69DA56 /* Pods_iossimplelife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC90D8C0BE4F95AC8AB31223 /* Pods_iossimplelife.framework */; };
 		DB8C8F6BB027DA027FC4D929 /* Pods_iossimplelifeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBBA0C3D19D5321331C36F04 /* Pods_iossimplelifeTests.framework */; };
 /* End PBXBuildFile section */
@@ -87,7 +87,6 @@
 		2D3DAF8F265558C100B8A85E /* CoreDateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDateStore.swift; sourceTree = "<group>"; };
 		2D3DAF942655739300B8A85E /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		2D3DAF99265A8B3900B8A85E /* AddRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewModel.swift; sourceTree = "<group>"; };
-		2D3DAF9F265A8BBF00B8A85E /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		2D45D60D2652B5F000D0EB44 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2D45D60E2652B5F000D0EB44 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2D6BDA16265AACA200CA1022 /* Record+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Record+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -100,6 +99,7 @@
 		2D8E26C326496E6F007DB982 /* KeyboardUIView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardUIView.xib; sourceTree = "<group>"; };
 		2D8E26CE264988E8007DB982 /* NumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberButton.swift; sourceTree = "<group>"; };
 		2D8E26D3264AB9EF007DB982 /* KeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModel.swift; sourceTree = "<group>"; };
+		2DE351DE2663E60800B650BE /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		54A5FEED6E1C8A860999B379 /* Pods-iossimplelife-iossimplelifeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iossimplelife-iossimplelifeUITests.debug.xcconfig"; path = "Target Support Files/Pods-iossimplelife-iossimplelifeUITests/Pods-iossimplelife-iossimplelifeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AC8D5CD1780CAE38E48DD235 /* Pods-iossimplelifeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iossimplelifeTests.release.xcconfig"; path = "Target Support Files/Pods-iossimplelifeTests/Pods-iossimplelifeTests.release.xcconfig"; sourceTree = "<group>"; };
 		B371F76807961ABC7907CBC0 /* Pods-iossimplelife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iossimplelife.release.xcconfig"; path = "Target Support Files/Pods-iossimplelife/Pods-iossimplelife.release.xcconfig"; sourceTree = "<group>"; };
@@ -239,7 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				2D6BDA0F265AAA9400CA1022 /* CoreData */,
-				2D3DAF9F265A8BBF00B8A85E /* Record.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -279,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				2D7CFA4B265172AB00B5E169 /* CategoryItemCollectionViewCell.swift */,
+				2DE351DE2663E60800B650BE /* MainTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -545,11 +545,11 @@
 				2D77C919265BFAF500B3EB5B /* CalendarViewController.swift in Sources */,
 				2D322A872642ED2200FD1A09 /* extensions.swift in Sources */,
 				2D322A502642EA0500FD1A09 /* MainViewController.swift in Sources */,
-				2D3DAFA0265A8BBF00B8A85E /* Record.swift in Sources */,
 				2D6BDA18265AACA200CA1022 /* Record+CoreDataClass.swift in Sources */,
 				2D7CFA462651710900B5E169 /* CategoryUIView.swift in Sources */,
 				2D8E26BC26496E52007DB982 /* KeyboardUIView.swift in Sources */,
 				2D8E26D4264AB9EF007DB982 /* KeyboardViewModel.swift in Sources */,
+				2DE351DF2663E60800B650BE /* MainTableViewCell.swift in Sources */,
 				2D7CFA4C265172AB00B5E169 /* CategoryItemCollectionViewCell.swift in Sources */,
 				2D6BDA19265AACA200CA1022 /* Record+CoreDataProperties.swift in Sources */,
 				2D322A4C2642EA0500FD1A09 /* AppDelegate.swift in Sources */,

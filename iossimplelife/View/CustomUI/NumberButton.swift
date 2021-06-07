@@ -23,6 +23,10 @@ class NumberButton: UIButton {
         setButton()
     }
     
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+    }
+    
     private func setButton() {
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 3
@@ -31,16 +35,15 @@ class NumberButton: UIButton {
         titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         tintColor = UIColor.black
     }
-}
-
-extension NumberButton {
-    func normalBackground() {
+    
+    public func normalBackground() {
         backgroundColor = UIColor.black
         titleLabel?.tintColor = UIColor.white
     }
     
-    func selectedBackground() {
+    public func selectedBackground() {
         backgroundColor = UIColor.green
         titleLabel?.tintColor = UIColor.white
     }
+    
 }

@@ -9,7 +9,7 @@ import UIKit
 
 protocol KeyboardUIViewDelegate: class {
     func keyboardView(_ view: KeyboardUIView, didTappedSave num: String, note: String)
-    func keyboardView(_ view: KeyboardUIView, didTappedCalendar day: String)
+    func keyboardView(_ view: KeyboardUIView, didTappedCalendar date: Date)
 }
 
 enum OperationType {
@@ -17,6 +17,7 @@ enum OperationType {
 }
 
 class KeyboardUIView: UIView {
+    
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var noteTextField: UITextField!
     @IBOutlet weak var iconImageView: UIImageView!
@@ -40,12 +41,19 @@ class KeyboardUIView: UIView {
     @IBOutlet weak var multiplyButton: NumberButton!
     @IBOutlet weak var plusButton: NumberButton!
     @IBOutlet weak var minusButton: NumberButton!
+    
     @IBOutlet weak var calendarButton: UIButton!
+    @IBOutlet weak var rightArrowButton: UIButton!
+    @IBOutlet weak var leftArrowButton: UIButton!
     
     private var viewModel: KeyboardViewModel?
     weak var delegate: KeyboardUIViewDelegate?
     
-//    private var operationType: OperationType = .none
+    private var date: Date = Date() {
+        didSet {
+            setCalendarButton(with: date)
+        }
+    }
     
     // tag 1 to 11
     @IBAction func numberButtonsAction(_ sender: NumberButton) {
@@ -65,6 +73,7 @@ class KeyboardUIView: UIView {
         super.init(frame: frame)
         xib()
         viewModel = KeyboardViewModel(delegate: self)
+        setCalendarButton(with: date)
         setButtonAction()
     }
     
@@ -82,6 +91,7 @@ class KeyboardUIView: UIView {
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.translatesAutoresizingMaskIntoConstraints = true
         setBackColor(plusButton, minusButton, dividedButton, multiplyButton)
+        noteTextField.delegate = self
         addSubview(view)
     }
     
@@ -94,32 +104,41 @@ class KeyboardUIView: UIView {
         okButton.addTarget(self, action: #selector(didTappedOKButton), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(didTappedBackButton), for: .touchUpInside)
         calendarButton.addTarget(self, action: #selector(didTappedCalendarButton), for: .touchUpInside)
+        leftArrowButton.addTarget(self, action: #selector(didTappedLeftArrowButton), for: .touchUpInside)
+        rightArrowButton.addTarget(self, action: #selector(didTappedRightArrowButton), for: .touchUpInside) 
+    }
+    
+    private func setCalendarButton(with date: Date ) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY/MM/dd"
+        
+        calendarButton.setTitle(dateFormatter.string(from: date), for: .normal)
     }
     
     // MARK: - Button Action
     
-    @objc func didTappedClearButton() {
+    @objc private func didTappedClearButton() {
         viewModel?.didTappedCleanButton()
         numberLabel.text = "0"
     }
     
-    @objc func didTappedPlusButton() {
+    @objc private func didTappedPlusButton() {
         viewModel?.didTappedOperationButtons(operation: .plus)
     }
     
-    @objc func didTappedMinusButton() {
+    @objc private func didTappedMinusButton() {
         viewModel?.didTappedOperationButtons(operation: .minus)
     }
     
-    @objc func didTappedMultiplyButton() {
+    @objc private func didTappedMultiplyButton() {
         viewModel?.didTappedOperationButtons(operation: .multiply)
     }
     
-    @objc func didTappedDivideButton() {
+    @objc private func didTappedDivideButton() {
         viewModel?.didTappedOperationButtons(operation: .divided)
     }
     
-    @objc func didTappedOKButton() {
+    @objc private func didTappedOKButton() {
         if okButton.titleLabel?.text == "="{
             /// 計算等於
             viewModel?.didTappedOKButton()
@@ -133,16 +152,42 @@ class KeyboardUIView: UIView {
         }
     }
     
-    @objc func didTappedBackButton() {
+    @objc private func didTappedBackButton() {
         viewModel?.didTappedBackButton()
     }
     
-    @objc func didTappedCalendarButton() {
-        delegate?.keyboardView(self, didTappedCalendar: "")
+    @objc private func didTappedCalendarButton() {
+        delegate?.keyboardView(self, didTappedCalendar: date)
+    }
+    
+    @objc private func didTappedRightArrowButton() {
+        guard let nextDate = Calendar.current.date(byAdding: .day, value: 1, to: date) else {
+            return
+        }
+        date = nextDate
+    }
+    
+    @objc private func didTappedLeftArrowButton() {
+        guard let lastDate = Calendar.current.date(byAdding: .day, value: -1, to: date) else {
+            return
+        }
+        date = lastDate
     }
 }
 
+// MARK: - UITextFieldDelegate
+
+extension KeyboardUIView: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+// MARK: - KeyboardViewModelDelegate
 extension KeyboardUIView: KeyboardViewModelDelegate {
+    
     func keyboardView(_ viewModel: KeyboardViewModel, didTappedNumber number: String) {
         numberLabel.text = "\(number)"
     }

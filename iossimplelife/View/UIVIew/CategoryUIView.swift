@@ -14,11 +14,11 @@ protocol CategoryUIViewDelegate: class {
 class CategoryUIView: UIView {
     
     private var mainCollectionView: UICollectionView?
-    weak var delegate: CategoryUIViewDelegate?
-    
     private var viewModel: CategoryViewModel?
-    
     private var models: [Category] = [Category]()
+    private var selectedModel: Category = Category()
+    
+    weak var delegate: CategoryUIViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,9 +26,8 @@ class CategoryUIView: UIView {
         if let collectionView = mainCollectionView {
             addSubview(collectionView)
         }
-        
+
         viewModel = CategoryViewModel(delegate: self)
-        viewModel?.fetchAllCategory()
     }
     
     required init?(coder: NSCoder) {
@@ -55,15 +54,19 @@ class CategoryUIView: UIView {
         mainCollectionView?.isPagingEnabled = true
         mainCollectionView?.register(CategoryItemCollectionViewCell.self, forCellWithReuseIdentifier: CategoryItemCollectionViewCell.identifier)
     }
+    
+    public func configure(with predicate: NSPredicate?) {
+        viewModel?.fetchAllCategory(predicate: predicate)
+    }
 }
 
 // MARK:- Collection Delegate
 
 extension CategoryUIView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemWidth: CGFloat = (self.width - 6) / 4
-        let itemHeigh: CGFloat = self.height / 3
-        return CGSize(width: itemWidth, height: itemHeigh)
+        return CGSize(width: (self.width - 6) / 4,
+                      height: self.height / 3)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -74,23 +77,37 @@ extension CategoryUIView: UICollectionViewDelegate, UICollectionViewDataSource, 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryItemCollectionViewCell.identifier,
                                                       for: indexPath) as! CategoryItemCollectionViewCell
         let model = models[indexPath.row]
-        cell.configure(with: model)
+        cell.configure(with: model, selected: selectedModel)
         
-        cell.didTappedBtnAction = { [weak self] (model) in
-            guard let strongSelf = self else {
-                return
-            }
-            strongSelf.delegate?.categoryView(strongSelf, didTappedItem: model)
-        }
+//        cell.didTappedBtnAction = { [weak self] (model) in
+//            guard let strongSelf = self else {
+//                return
+//            }
+//            strongSelf.delegate?.categoryView(strongSelf, didTappedItem: model)
+//        }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedModel = models[indexPath.row]
+        
+        DispatchQueue.main.async {
+            self.mainCollectionView?.reloadData()
+        }
     }
 }
 
 // MARK:- ViewModel Delegate
 
 extension CategoryUIView: CategoryViewModelDelegate {
+    
     func categoryView(_ viewModel: CategoryViewModel, fetchAllCategory categories: [Category]) {
-        self.models = categories
+        models = categories
+        
+        if categories.count > 0 {
+            selectedModel = categories[0]  // dafault selected
+        }
+        
         DispatchQueue.main.async {
             self.mainCollectionView?.reloadData()
         }

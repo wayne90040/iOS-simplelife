@@ -8,6 +8,7 @@
 import UIKit
 
 class CalendarViewController: UIViewController {
+    
     static let storyboardName: String = "CalendarViewController"
 
     @IBOutlet weak var backButton: UIButton!
@@ -18,6 +19,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var dismissUIVIew: UIView!
     
     private var viewModel: CalendarViewModel?
+    private var date: Date = Date()
     private var daysOfmonth: Int = 0 // 月的天數
     private var spaceNum: Int = 0 // 需要幾個空白的天數
     private let months: [String] = [
@@ -70,6 +72,10 @@ class CalendarViewController: UIViewController {
         calendarUIView.addGestureRecognizer(swipeDown)
     }
     
+    public func setDate(date: Date) {
+        self.date = date
+    }
+    
     // MARK:- Action
     @objc private func didTappedNextMonth() {
         viewModel?.didTappedNextOLastMontButton(.next)
@@ -101,7 +107,9 @@ class CalendarViewController: UIViewController {
 }
 
 // MARK: - UICollection Delegate
-extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource,
+                                  UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return daysOfmonth + spaceNum - 1
     }
@@ -125,6 +133,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
 
 // MARK: - ViewModel Delegate
 extension CalendarViewController: CalendarViewModelDelegate {
+    
     func calendarView(_ viewModel: CalendarViewModel, setCalendar year: Int, month: Int, dayOfMonth: Int, firstDay: Int) {
         titleLabel.text = "\(year)  \(months[month - 1])"
         self.daysOfmonth = dayOfMonth
@@ -143,6 +152,7 @@ extension CalendarViewController: CalendarViewModelDelegate {
 
 // MARK: - Calendar CollectionView Cell
 class CalendarCollectionViewCell: UICollectionViewCell {
+    
     static let identifier: String = "CalendarCollectionViewCell"
     
     private let dayLabel: UILabel = {
