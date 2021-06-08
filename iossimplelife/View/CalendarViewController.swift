@@ -31,7 +31,7 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = CalendarViewModel(delegate: self)
-        viewModel?.initCalendar()
+        viewModel?.initCalendar(date: date)
         setView()
     }
     
@@ -118,10 +118,17 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarCollectionViewCell.identifier,
                                                       for: indexPath) as! CalendarCollectionViewCell
         let day = (indexPath.row + 1) - (spaceNum - 1)
+        let selectedDay = Calendar.current.component(.day, from: date)
         
         if day > 0 {
-            cell.configure(with: "\(day)")
+            if day == selectedDay {
+                cell.configureSelected(with: "\(day)")
+            }
+            else {
+                cell.configure(with: "\(day)")
+            }
         }
+        
         return cell
     }
     
@@ -182,5 +189,12 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     
     public func configure(with day: String) {
         dayLabel.text = day
+    }
+    
+    public func configureSelected(with day: String) {
+        dayLabel.text = day
+        dayLabel.backgroundColor = .yellow
+        dayLabel.layer.cornerRadius = min(dayLabel.width, dayLabel.height) / 2
+        dayLabel.clipsToBounds = true
     }
 }

@@ -47,7 +47,9 @@ class CalendarViewModel {
         self.delegate = delegate
     }
     
-    public func initCalendar() {
+    public func initCalendar(date: Date) {
+        currentYear = Calendar.current.component(.year, from: date)
+        currentMonth = Calendar.current.component(.month, from: date)
         delegate?.calendarView(self, setCalendar: currentYear, month: currentMonth, dayOfMonth: numberOfMonth, firstDay: whatDayInIt)
     }
     
