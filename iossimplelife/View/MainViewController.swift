@@ -17,17 +17,6 @@ class MainViewController: UIViewController {
         return button
     }()
     
-    private let incomeView: MainMoneyUIView = {
-        let view = MainMoneyUIView(title: "收入", isLeft: false)
-        view.isLeft = false
-        return view
-    }()
-    
-    private let costView: MainMoneyUIView = {
-        let view = MainMoneyUIView(title: "支出", isLeft: true)
-        view.isLeft = true
-        return view
-    }()
     
     private let mainTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -37,10 +26,10 @@ class MainViewController: UIViewController {
         return tableView
     }()
     
-    private let chartView: MainTableViewHeaderView = MainTableViewHeaderView()
-    
     private var viewModel: MainViewModel?
     private var models: [Record] = [Record]()
+    private var costValue: Float = 0.0
+    private var depositValue: Float = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +37,6 @@ class MainViewController: UIViewController {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         viewModel = MainViewModel(delegate: self)
-        chartView.configure(with: "test")
         view.addSubviews(mainTableView, addButton)
     }
     
@@ -60,8 +48,6 @@ class MainViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let buttonSize: CGFloat = 50.0
-        let viewHeight: CGFloat = 60.0
-        let viewWidth: CGFloat = view.width / 2
         
         addButton.frame = CGRect(x: (view.width - buttonSize) / 2,
                                  y: view.bottom - buttonSize - 20,
@@ -70,14 +56,6 @@ class MainViewController: UIViewController {
         addButton.layer.borderWidth = 2.0
         addButton.layer.cornerRadius = addButton.width / 2
         addButton.clipsToBounds = true
-        
-//        costView.frame = CGRect(x: 0, y: topBarHeight, width: viewWidth, height: viewHeight)
-//        incomeView.frame = CGRect(x: viewWidth, y: topBarHeight, width: viewWidth, height: viewHeight)
-//
-//        chartView.frame = CGRect(x: 0,
-//                                 y: costView.bottom,
-//                                 width: view.width,
-//                                 height: view.height - costView.height)
         
         mainTableView.frame = CGRect(x: 0,
                                      y: 0,
@@ -102,7 +80,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let headerView = MainTableViewHeaderView()
         headerView.backgroundColor = .systemBackground
         headerView.frame = CGRect(x: 0, y: 0, width: mainTableView.width, height: 300)
-        headerView.configure(with: "")
+        headerView.configure(costValue: costValue, depoistValue: depositValue)
         return headerView
     }
     
@@ -146,31 +124,28 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - MainViewModel
 extension MainViewController: MainViewModelDelegate {
+    
     func mainView(_ viewModel: MainViewModel, editStyle style: CoreDateEditStyle, records: [Record]) {
         self.models = records
         
-        if records.count > 0 {
-            var costValue: Float = 0.0
-            var depositValue: Float = 0.0
-            
-            records.forEach { (record) in
-                guard let price = Float(record.price ?? "0") else {
-                    return
-                }
-                
-                if record.isCost {
-                    costValue += price
-                } else {
-                    depositValue += price
-                }
-            }
+        // init
+        costValue = 0.0
+        depositValue = 0.0
         
-            costView.configure(with: costValue)
-            incomeView.configure(with: depositValue)
+        records.forEach { (record) in
+            guard let price = Float(record.price ?? "0") else { return }
+            
+            if record.isCost {
+                costValue += price
+            } else {
+                depositValue += price
+            }
         }
         
         DispatchQueue.main.async {
             self.mainTableView.reloadData()
         }
     }
+    
+    
 }

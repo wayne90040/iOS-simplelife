@@ -180,6 +180,7 @@
 		2D322A4A2642EA0500FD1A09 /* iossimplelife */ = {
 			isa = PBXGroup;
 			children = (
+				2D886BD326764026001B9260 /* Resource */,
 				2D3DAF9E265A8B9400B8A85E /* Model */,
 				2D322A822642EB3100FD1A09 /* View */,
 				2D322A812642EB2700FD1A09 /* ViewModel */,
@@ -189,9 +190,6 @@
 				2D322A592642EA0800FD1A09 /* LaunchScreen.storyboard */,
 				2D322A5C2642EA0800FD1A09 /* Info.plist */,
 				2D322A542642EA0500FD1A09 /* iossimplelife.xcdatamodeld */,
-				2D322A862642ED2200FD1A09 /* extensions.swift */,
-				2D3DAF8526540BE800B8A85E /* Constants.swift */,
-				2D3DAF8F265558C100B8A85E /* CoreDateStore.swift */,
 			);
 			path = iossimplelife;
 			sourceTree = "<group>";
@@ -287,6 +285,16 @@
 				2DE351DE2663E60800B650BE /* MainTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		2D886BD326764026001B9260 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				2D3DAF8F265558C100B8A85E /* CoreDateStore.swift */,
+				2D3DAF8526540BE800B8A85E /* Constants.swift */,
+				2D322A862642ED2200FD1A09 /* extensions.swift */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		2D8E26D82651535A007DB982 /* CustomUI */ = {
