@@ -41,7 +41,7 @@ class MainTableViewCell: UITableViewCell {
         super.layoutSubviews()
         
         iconImage.frame = CGRect(x: 10, y: 10, width: contentView.height - 20, height: contentView.height - 20)
-        titleLabel.frame = CGRect(x: iconImage.right + 5,
+        titleLabel.frame = CGRect(x: iconImage.right + 15,
                                   y: 0,
                                   width: 60,
                                   height: contentView.height)
@@ -58,7 +58,8 @@ class MainTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    public func configure(with model: Record) {
+    public func configure(with model: Record, _ type: SegmentedStyle) {
+        
         iconImage.image = UIImage(named: model.imageUrl ?? "")
         if let note = model.note, !note.isEmpty {
             titleLabel.text = note
@@ -66,8 +67,18 @@ class MainTableViewCell: UITableViewCell {
             titleLabel.text = model.category
         }
         
-        valueLabel.text = model.price
+        
         titleLabel.sizeToFit()
         valueLabel.sizeToFit()
+        
+        switch type {
+        case .cost:
+            valueLabel.text = "-\(model.price ?? "")"
+            valueLabel.textColor = .red
+            valueLabel.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        case .deposit:
+            valueLabel.text = model.price
+            valueLabel.textColor = .green
+        }
     }
 }

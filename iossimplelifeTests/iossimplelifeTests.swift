@@ -132,8 +132,7 @@ extension iossimplelifeTests: KeyboardViewModelDelegate {
     }
     
     func keyboardView(_ viewModel: KeyboardViewModel, didTappedBack numberString: String) {
-        
+        self.res = numberString
     }
-    
 }
 

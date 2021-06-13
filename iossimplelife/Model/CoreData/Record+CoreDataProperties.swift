@@ -21,6 +21,7 @@ extension Record {
     @NSManaged public var price: String?
     @NSManaged public var imageUrl: String?
     @NSManaged public var date: Date?
+    @NSManaged public var isCost: Bool
 
 }
 

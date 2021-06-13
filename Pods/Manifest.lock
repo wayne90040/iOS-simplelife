@@ -1,16 +1,18 @@
 PODS:
-  - CVCalendar (1.7.0)
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
 
 DEPENDENCIES:
-  - CVCalendar (~> 1.7.0)
+  - Charts
 
 SPEC REPOS:
   trunk:
-    - CVCalendar
+    - Charts
 
 SPEC CHECKSUMS:
-  CVCalendar: 1174c1b43c1a258970e14c1e8b19ef4106c5900b
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
 
-PODFILE CHECKSUM: 29ecabacd3a171b08dd350393c0ad47c83011f2b
+PODFILE CHECKSUM: bfcba9a51574c4a038c1699da4a05aafb1ac69b2
 
 COCOAPODS: 1.9.3

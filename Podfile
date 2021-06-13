@@ -6,7 +6,7 @@ target 'iossimplelife' do
   use_frameworks!
 
   # Pods for iossimplelife
-  pod 'CVCalendar', '~> 1.7.0'
+  pod 'Charts'
 
 
   target 'iossimplelifeTests' do

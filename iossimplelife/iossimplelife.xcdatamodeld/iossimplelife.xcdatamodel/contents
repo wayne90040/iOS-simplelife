@@ -10,11 +10,12 @@
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="imageUrl" optional="YES" attributeType="String"/>
+        <attribute name="isCost" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="note" optional="YES" attributeType="String"/>
         <attribute name="price" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="Category" positionX="-63" positionY="-18" width="128" height="89"/>
-        <element name="Record" positionX="-63" positionY="9" width="128" height="104"/>
+        <element name="Record" positionX="-63" positionY="9" width="128" height="119"/>
     </elements>
 </model>

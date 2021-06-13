@@ -78,13 +78,7 @@ extension CategoryUIView: UICollectionViewDelegate, UICollectionViewDataSource, 
                                                       for: indexPath) as! CategoryItemCollectionViewCell
         let model = models[indexPath.row]
         cell.configure(with: model, selected: selectedModel)
-        
-//        cell.didTappedBtnAction = { [weak self] (model) in
-//            guard let strongSelf = self else {
-//                return
-//            }
-//            strongSelf.delegate?.categoryView(strongSelf, didTappedItem: model)
-//        }
+    
         return cell
     }
     
@@ -94,6 +88,7 @@ extension CategoryUIView: UICollectionViewDelegate, UICollectionViewDataSource, 
         DispatchQueue.main.async {
             self.mainCollectionView?.reloadData()
         }
+        delegate?.categoryView(self, didTappedItem: selectedModel)
     }
 }
 
@@ -106,6 +101,7 @@ extension CategoryUIView: CategoryViewModelDelegate {
         
         if categories.count > 0 {
             selectedModel = categories[0]  // dafault selected
+            delegate?.categoryView(self, didTappedItem: selectedModel)
         }
         
         DispatchQueue.main.async {

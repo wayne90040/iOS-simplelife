@@ -18,9 +18,11 @@ enum OperationType {
 
 class KeyboardUIView: UIView {
     
+    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var noteTextField: UITextField!
     @IBOutlet weak var iconImageView: UIImageView!
+    
     @IBOutlet weak var number7Button: NumberButton!
     @IBOutlet weak var number8Button: NumberButton!
     @IBOutlet weak var number9Button: NumberButton!
@@ -49,7 +51,13 @@ class KeyboardUIView: UIView {
     private var viewModel: KeyboardViewModel?
     weak var delegate: KeyboardUIViewDelegate?
     
-    private var date: Date = Date() {
+    var iconImageName: String = "" {
+        didSet {
+            iconImageView.image = UIImage(named: iconImageName)
+        }
+    }
+    
+    var date: Date = Date() {
         didSet {
             setCalendarButton(with: date)
         }
@@ -75,6 +83,9 @@ class KeyboardUIView: UIView {
         viewModel = KeyboardViewModel(delegate: self)
         setCalendarButton(with: date)
         setButtonAction()
+        
+        topView.layer.borderWidth = 1.0
+        topView.layer.borderColor = UIColor.black.cgColor
     }
     
     required init?(coder: NSCoder) {
@@ -111,7 +122,6 @@ class KeyboardUIView: UIView {
     private func setCalendarButton(with date: Date ) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY/MM/dd"
-        
         calendarButton.setTitle(dateFormatter.string(from: date), for: .normal)
     }
     
@@ -148,7 +158,7 @@ class KeyboardUIView: UIView {
             guard let number = numberLabel.text else {
                 return
             }
-            delegate?.keyboardView(self, didTappedSave: number, note: "")
+            delegate?.keyboardView(self, didTappedSave: number, note: noteTextField.text ?? "")
         }
     }
     

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Charts
 
 class MainViewController: UIViewController {
     
@@ -29,11 +30,14 @@ class MainViewController: UIViewController {
     }()
     
     private let mainTableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.identifier)
         tableView.rowHeight = 60
+        
         return tableView
     }()
+    
+    private let chartView: MainTableViewHeaderView = MainTableViewHeaderView()
     
     private var viewModel: MainViewModel?
     private var models: [Record] = [Record]()
@@ -44,7 +48,8 @@ class MainViewController: UIViewController {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         viewModel = MainViewModel(delegate: self)
-        view.addSubviews(incomeView, costView, mainTableView, addButton)
+        chartView.configure(with: "test")
+        view.addSubviews(mainTableView, addButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,13 +71,18 @@ class MainViewController: UIViewController {
         addButton.layer.cornerRadius = addButton.width / 2
         addButton.clipsToBounds = true
         
-        costView.frame = CGRect(x: 0, y: topBarHeight, width: viewWidth, height: viewHeight)
-        incomeView.frame = CGRect(x: viewWidth, y: topBarHeight, width: viewWidth, height: viewHeight)
+//        costView.frame = CGRect(x: 0, y: topBarHeight, width: viewWidth, height: viewHeight)
+//        incomeView.frame = CGRect(x: viewWidth, y: topBarHeight, width: viewWidth, height: viewHeight)
+//
+//        chartView.frame = CGRect(x: 0,
+//                                 y: costView.bottom,
+//                                 width: view.width,
+//                                 height: view.height - costView.height)
         
         mainTableView.frame = CGRect(x: 0,
-                                     y: costView.bottom,
+                                     y: 0,
                                      width: view.width,
-                                     height: view.height - costView.height)
+                                     height: view.height)
     }
     
     @objc func didTappedAddButton () {
@@ -81,8 +91,20 @@ class MainViewController: UIViewController {
     }
 }
 
-// MARK: TableView
+// MARK:- TableView
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 300
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = MainTableViewHeaderView()
+        headerView.backgroundColor = .systemBackground
+        headerView.frame = CGRect(x: 0, y: 0, width: mainTableView.width, height: 300)
+        headerView.configure(with: "")
+        return headerView
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
@@ -91,7 +113,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.identifier,
                                                  for: indexPath) as! MainTableViewCell
-        cell.configure(with: models[indexPath.row])
+        let model = models[indexPath.row]
+        let segmentedStyle: SegmentedStyle = SegmentedStyle(isCost: model.isCost) ?? .cost
+        
+        switch segmentedStyle {
+        case .cost:
+            cell.configure(with: model, .cost)
+        case .deposit:
+            cell.configure(with: model, .deposit)
+        }
+        
         return cell
     }
     
@@ -117,6 +148,27 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 extension MainViewController: MainViewModelDelegate {
     func mainView(_ viewModel: MainViewModel, editStyle style: CoreDateEditStyle, records: [Record]) {
         self.models = records
+        
+        if records.count > 0 {
+            var costValue: Float = 0.0
+            var depositValue: Float = 0.0
+            
+            records.forEach { (record) in
+                guard let price = Float(record.price ?? "0") else {
+                    return
+                }
+                
+                if record.isCost {
+                    costValue += price
+                } else {
+                    depositValue += price
+                }
+            }
+        
+            costView.configure(with: costValue)
+            incomeView.configure(with: depositValue)
+        }
+        
         DispatchQueue.main.async {
             self.mainTableView.reloadData()
         }

@@ -101,14 +101,6 @@ extension CoreDataStore {
             print("fetchAllCategories: \(error)")
         }
         
-//        var result = [Category]()
-//
-//        do {
-//            result = try context.fetch(Category.fetchRequest())
-//        } catch {
-//            print("fetchAllCategories: \(error)")
-//        }
-        
         return result
     }
     
@@ -142,13 +134,14 @@ extension CoreDataStore {
 // MARK: - Record Core Data
 extension CoreDataStore {
     // C
-    func insertRecord(category: String, imageUrl: String, price: String, note: String, date: Date, completion: @escaping(Bool) -> Void) {
+    func insertRecord(category: String, imageUrl: String, price: String, note: String, date: Date, isCost: Bool, completion: @escaping(Bool) -> Void) {
         let newItem = Record(context: context)
         newItem.category = category
         newItem.price = price
         newItem.note = note
         newItem.date = date
         newItem.imageUrl = imageUrl
+        newItem.isCost = isCost
         
         do {
             try context.save()

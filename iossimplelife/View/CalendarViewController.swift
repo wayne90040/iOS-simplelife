@@ -22,6 +22,7 @@ class CalendarViewController: UIViewController {
     private var date: Date = Date()
     private var daysOfmonth: Int = 0 // 月的天數
     private var spaceNum: Int = 0 // 需要幾個空白的天數
+    
     private let months: [String] = [
         "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
     ]
@@ -152,8 +153,13 @@ extension CalendarViewController: CalendarViewModelDelegate {
     }
     
     func calendarView(_ viewModel: CalendarViewModel, didSelectDate date: Date) {
-        // 處理傳回來後的 Date 給 AddRecordViewController
-        sendDate?(date)
+
+        sendDate?(date)  // 處理傳回來後的 Date 給 AddRecordViewController
+        
+        self.date = date
+        DispatchQueue.main.async {
+            self.mainCollectionView.reloadData()
+        }
     }
 }
 
@@ -170,6 +176,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        dayLabel.frame = CGRect(x: 5, y: 5, width: contentView.width - 10, height: contentView.height - 10)
         contentView.addSubview(dayLabel)
     }
     
@@ -177,14 +184,10 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        dayLabel.frame = CGRect(x: 0, y: 0, width: contentView.width, height: contentView.height)
-    }
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         dayLabel.text = ""
+        dayLabel.backgroundColor = .clear
     }
     
     public func configure(with day: String) {
@@ -194,7 +197,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     public func configureSelected(with day: String) {
         dayLabel.text = day
         dayLabel.backgroundColor = .yellow
-        dayLabel.layer.cornerRadius = min(dayLabel.width, dayLabel.height) / 2
-        dayLabel.clipsToBounds = true
+        dayLabel.layer.cornerRadius = max(dayLabel.width, dayLabel.height) / 2
+        dayLabel.layer.masksToBounds = true
     }
 }

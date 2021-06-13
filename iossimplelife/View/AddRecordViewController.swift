@@ -82,6 +82,7 @@ extension AddRecordViewController: CategoryUIViewDelegate {
     
     func categoryView(_ view: CategoryUIView, didTappedItem model: Category) {
         self.category = model
+        keyboardView.iconImageName = model.imageUrl ?? ""
     }
 }
 
@@ -93,10 +94,11 @@ extension AddRecordViewController: KeyboardUIViewDelegate {
         let vc = storyBoard.instantiateViewController(withIdentifier: CalendarViewController.storyboardName) as! CalendarViewController
         vc.modalPresentationStyle = .custom
         vc.modalTransitionStyle = .crossDissolve
-        vc.setDate(date: date)
-        
-        vc.sendDate? = { [weak self] (date) in
+        vc.setDate(date: date)  // Set date from keyboardView
+       
+        vc.sendDate = { [weak self] (date) in  // Send date from Calendar
             self?.date = date
+            self?.keyboardView.date = date
         }
         
         present(vc, animated: true)
@@ -110,33 +112,49 @@ extension AddRecordViewController: KeyboardUIViewDelegate {
             viewModel?.saveRecordtoCorData(category: category.name ?? "",
                                            imageUrl: category.imageUrl ?? "",
                                            price: num,
-                                           note: "",
-                                           date: date)
+                                           note: note,
+                                           date: date,
+                                           isCost: segmentedStyle?.isCost ?? true)
         }
     }
     
     private func alertVC() {
-        let alert = UIAlertController(title: "提示: 金額為0", message: "要記錄此筆嗎？", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .destructive){ [weak self] _ in
+        let ok: UIAlertAction = UIAlertAction(title: "OK", style: .destructive) { [weak self] _ in
             self?.viewModel?.saveRecordtoCorData(category: self?.category.name ?? "",
                                                  imageUrl: self?.category.imageUrl ?? "",
                                                  price: "0",
                                                  note: "",
-                                                 date: self?.date ?? Date())
-        })
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
+                                                 date: self?.date ?? Date(),
+                                                 isCost: self?.segmentedStyle?.isCost ?? true)
+        }
+        let cancel: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        self.showAlert(title: "提示: 金額為0", message: "要記錄此筆嗎？", actions: [ok, cancel])
     }
 }
 
 // MARK: - AddRecordViewModelDelegate
 extension AddRecordViewController: AddRecordViewModelDelegate {
-    
+    func addRecordVC(_ viewModel: AddRecordViewModel, didTappedSave success: Bool) {
+        if success {
+            let ok: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            self.showAlert(title: "記帳成功", message: "", actions: [ok])
+        }
+    }
 }
 
 // MARK: - Enum SegmentedStyle
 enum SegmentedStyle {
     case cost, deposit
+    
+    var isCost: Bool{
+        switch self {
+        case .cost:
+            return true
+        case .deposit:
+            return false
+        }
+    }
 }
 
 extension SegmentedStyle {
@@ -148,6 +166,15 @@ extension SegmentedStyle {
             self = .deposit
         default:
             self = .cost
+        }
+    }
+    
+    init?(isCost: Bool) {
+        switch isCost {
+        case true:
+            self = .cost
+        case false:
+            self = .deposit
         }
     }
 }

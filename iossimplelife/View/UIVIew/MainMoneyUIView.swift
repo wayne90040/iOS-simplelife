@@ -11,12 +11,14 @@ class MainMoneyUIView: UIView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
         return label
     }()
     
     private let valueLabel: UILabel = {
         let label = UILabel()
         label.text = "$0"
+        label.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
         return label
     }()
     
@@ -50,14 +52,17 @@ class MainMoneyUIView: UIView {
         }
     }
     
-    public func configure(with title: String, value: String) {
-        
-        self.title = title
-        self.value = value
-    }
-    
     private func setupView() {
         titleLabel.text = title
         addSubviews(titleLabel, valueLabel)
+    }
+    
+    public func configure(with value: Float) {
+        if floor(value) == value {
+            valueLabel.text = "\(Int(value))"
+        } else {
+            valueLabel.text = "\(value)"
+        }
+        
     }
 }
