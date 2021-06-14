@@ -20,7 +20,7 @@ extension Record {
     @NSManaged public var note: String?
     @NSManaged public var price: String?
     @NSManaged public var imageUrl: String?
-    @NSManaged public var date: Date?
+    @NSManaged public var date: String?
     @NSManaged public var isCost: Bool
 
 }

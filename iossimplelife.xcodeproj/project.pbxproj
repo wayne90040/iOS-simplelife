@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0182FEAEB81ED5D4A8090C91 /* Pods_iossimplelife_iossimplelifeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D069E9962E0708277DBDF616 /* Pods_iossimplelife_iossimplelifeUITests.framework */; };
+		2D151CFE267755BB0093E88E /* PieChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D151CFD267755BB0093E88E /* PieChartTableViewCell.swift */; };
 		2D322A4C2642EA0500FD1A09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D322A4B2642EA0500FD1A09 /* AppDelegate.swift */; };
 		2D322A4E2642EA0500FD1A09 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D322A4D2642EA0500FD1A09 /* SceneDelegate.swift */; };
 		2D322A502642EA0500FD1A09 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D322A4F2642EA0500FD1A09 /* MainViewController.swift */; };
@@ -35,7 +36,6 @@
 		2D7CFA462651710900B5E169 /* CategoryUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CFA452651710800B5E169 /* CategoryUIView.swift */; };
 		2D7CFA4C265172AB00B5E169 /* CategoryItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7CFA4B265172AB00B5E169 /* CategoryItemCollectionViewCell.swift */; };
 		2D886BC72675C900001B9260 /* MainTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D886BC62675C900001B9260 /* MainTableViewHeaderView.swift */; };
-		2D886BCC2675EDDC001B9260 /* MainTableHeaderUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D886BCB2675EDDC001B9260 /* MainTableHeaderUIView.swift */; };
 		2D8E26BC26496E52007DB982 /* KeyboardUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E26BB26496E52007DB982 /* KeyboardUIView.swift */; };
 		2D8E26C426496E6F007DB982 /* KeyboardUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8E26C326496E6F007DB982 /* KeyboardUIView.xib */; };
 		2D8E26CF264988E8007DB982 /* NumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E26CE264988E8007DB982 /* NumberButton.swift */; };
@@ -65,6 +65,7 @@
 /* Begin PBXFileReference section */
 		0C792706002A672DC9247A59 /* Pods-iossimplelife-iossimplelifeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iossimplelife-iossimplelifeUITests.release.xcconfig"; path = "Target Support Files/Pods-iossimplelife-iossimplelifeUITests/Pods-iossimplelife-iossimplelifeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		118D76ADE3F8EC291C0EB1AC /* Pods-iossimplelife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iossimplelife.debug.xcconfig"; path = "Target Support Files/Pods-iossimplelife/Pods-iossimplelife.debug.xcconfig"; sourceTree = "<group>"; };
+		2D151CFD267755BB0093E88E /* PieChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartTableViewCell.swift; sourceTree = "<group>"; };
 		2D322A482642EA0500FD1A09 /* iossimplelife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iossimplelife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D322A4B2642EA0500FD1A09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D322A4D2642EA0500FD1A09 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,7 +99,6 @@
 		2D7CFA452651710800B5E169 /* CategoryUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryUIView.swift; sourceTree = "<group>"; };
 		2D7CFA4B265172AB00B5E169 /* CategoryItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		2D886BC62675C900001B9260 /* MainTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewHeaderView.swift; sourceTree = "<group>"; };
-		2D886BCB2675EDDC001B9260 /* MainTableHeaderUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableHeaderUIView.swift; sourceTree = "<group>"; };
 		2D8E26BB26496E52007DB982 /* KeyboardUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardUIView.swift; sourceTree = "<group>"; };
 		2D8E26C326496E6F007DB982 /* KeyboardUIView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardUIView.xib; sourceTree = "<group>"; };
 		2D8E26CE264988E8007DB982 /* NumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberButton.swift; sourceTree = "<group>"; };
@@ -264,7 +264,6 @@
 				2D322A932642F7BA00FD1A09 /* MainMoneyUIView.swift */,
 				2D7CFA452651710800B5E169 /* CategoryUIView.swift */,
 				2D886BC62675C900001B9260 /* MainTableViewHeaderView.swift */,
-				2D886BCB2675EDDC001B9260 /* MainTableHeaderUIView.swift */,
 			);
 			path = UIVIew;
 			sourceTree = "<group>";
@@ -283,6 +282,7 @@
 			children = (
 				2D7CFA4B265172AB00B5E169 /* CategoryItemCollectionViewCell.swift */,
 				2DE351DE2663E60800B650BE /* MainTableViewCell.swift */,
+				2D151CFD267755BB0093E88E /* PieChartTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -557,6 +557,7 @@
 			files = (
 				2D77C921265BFCEB00B3EB5B /* CalendarViewModel.swift in Sources */,
 				2D77C919265BFAF500B3EB5B /* CalendarViewController.swift in Sources */,
+				2D151CFE267755BB0093E88E /* PieChartTableViewCell.swift in Sources */,
 				2D322A872642ED2200FD1A09 /* extensions.swift in Sources */,
 				2D322A502642EA0500FD1A09 /* MainViewController.swift in Sources */,
 				2D6BDA18265AACA200CA1022 /* Record+CoreDataClass.swift in Sources */,
@@ -570,7 +571,6 @@
 				2D3DAF8626540BE800B8A85E /* Constants.swift in Sources */,
 				2D886BC72675C900001B9260 /* MainTableViewHeaderView.swift in Sources */,
 				2D45D6102652B5F000D0EB44 /* Category+CoreDataProperties.swift in Sources */,
-				2D886BCC2675EDDC001B9260 /* MainTableHeaderUIView.swift in Sources */,
 				2D322A4E2642EA0500FD1A09 /* SceneDelegate.swift in Sources */,
 				2D322A942642F7BA00FD1A09 /* MainMoneyUIView.swift in Sources */,
 				2D3DAF9A265A8B3900B8A85E /* AddRecordViewModel.swift in Sources */,

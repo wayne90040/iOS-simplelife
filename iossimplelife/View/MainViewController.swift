@@ -19,17 +19,18 @@ class MainViewController: UIViewController {
     
     
     private let mainTableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.register(PieChartTableViewCell.self, forCellReuseIdentifier: PieChartTableViewCell.identifier)
         tableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.identifier)
-        tableView.rowHeight = 60
-        
         return tableView
     }()
     
     private var viewModel: MainViewModel?
-    private var models: [Record] = [Record]()
     private var costValue: Float = 0.0
     private var depositValue: Float = 0.0
+    
+    private var datesOfRecord = [[String: String]]()
+    private var recordsOfDate = [String: [Record]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +43,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        viewModel?.fetchAllRecords()
+        viewModel?.fetchRecordOfDate()
     }
     
     override func viewDidLayoutSubviews() {
@@ -69,76 +70,145 @@ class MainViewController: UIViewController {
     }
 }
 
+
 // MARK:- TableView
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return datesOfRecord.count + 1  // Pie Chart View
+    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 300
+        if section > 0 {
+            return 30
+        } else {
+            return 0
+        }
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = MainTableViewHeaderView()
-        headerView.backgroundColor = .systemBackground
-        headerView.frame = CGRect(x: 0, y: 0, width: mainTableView.width, height: 300)
-        headerView.configure(costValue: costValue, depoistValue: depositValue)
-        return headerView
+     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section > 0 {
+            return datesOfRecord[section - 1]["date"]
+        }
+        return nil
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return models.count
+        if section > 0 {
+            let key = datesOfRecord[section - 1]["date"] ?? ""
+            return recordsOfDate[key]?.count ?? 0
+        } else {
+            return 1
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 300
+        }
+        return 60
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.identifier,
-                                                 for: indexPath) as! MainTableViewCell
-        let model = models[indexPath.row]
-        let segmentedStyle: SegmentedStyle = SegmentedStyle(isCost: model.isCost) ?? .cost
         
-        switch segmentedStyle {
-        case .cost:
-            cell.configure(with: model, .cost)
-        case .deposit:
-            cell.configure(with: model, .deposit)
+        let section = indexPath.section
+        
+        if section > 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.identifier,
+                                                     for: indexPath) as! MainTableViewCell
+            
+            let key = datesOfRecord[indexPath.section - 1]["date"] ?? ""
+            
+            guard let models = recordsOfDate[key] else {
+                return UITableViewCell()
+            }
+            
+            let model = models[indexPath.row]
+            
+            let segmentedStyle: SegmentedStyle = SegmentedStyle(isCost: model.isCost) ?? .cost
+            
+            switch segmentedStyle {
+            case .cost:
+                cell.configure(with: model, .cost)
+            case .deposit:
+                cell.configure(with: model, .deposit)
+            }
+            
+            return cell
         }
-        
-        return cell
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: PieChartTableViewCell.identifier,
+                                                     for: indexPath) as! PieChartTableViewCell
+            
+            cell.configure(costValue: costValue, depoistValue: depositValue)
+            return cell
+        }
+
     }
     
     // 開啟 TableView 側滑功能
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        switch editingStyle{
-        case .delete:
-            let model = models[indexPath.row]
-            let cancel = UIAlertAction(title: "取消", style: .cancel)
-            let confirm = UIAlertAction(title: "確定", style: .default) { [weak self] _ in
-                self?.viewModel?.deleteRecord(record: model)
+        let section = indexPath.section
+        
+        if section > 0 {
+            switch editingStyle{
+            case .delete:
+                
+                guard let key = datesOfRecord[indexPath.section - 1]["date"],
+                      let models = recordsOfDate[key] else {
+                    return
+                }
+                let model = models[indexPath.row]
+                let confirm = UIAlertAction(title: "確定", style: .default) { [weak self] _ in
+                    self?.viewModel?.deleteRecord(record: model)
+                }
+                let cancel = UIAlertAction(title: "取消", style: .cancel)
+                
+                self.showAlert(title: "確認刪除", message: "確定要刪除嗎？", actions: [cancel, confirm])
+                
+            default:
+                break
             }
-            
-            self.showAlert(title: "確認刪除", message: "確定要刪除嗎？", actions: [cancel, confirm])
-            
-        default:
-            break
         }
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == 0 {
+            return false
+        }
+        
+        return true
+    }
 }
+
 
 // MARK: - MainViewModel
 extension MainViewController: MainViewModelDelegate {
     
-    func mainView(_ viewModel: MainViewModel, editStyle style: CoreDateEditStyle, records: [Record]) {
-        self.models = records
+    func mainView(_ viewModel: MainViewModel, deleteRecord success: Bool) {
+        if success {
+            viewModel.fetchRecordOfDate()
+        }
+    }
+    
+    func mainView(_ viewModel: MainViewModel, fetchRecord dates: [[String : String]], records: [String : [Record]]) {
+        self.datesOfRecord = dates
+        self.recordsOfDate = records
         
         // init
         costValue = 0.0
         depositValue = 0.0
         
-        records.forEach { (record) in
-            guard let price = Float(record.price ?? "0") else { return }
-            
-            if record.isCost {
-                costValue += price
-            } else {
-                depositValue += price
+        recordsOfDate.forEach() { dic in
+            let records = dic.value
+            records.forEach() { record in
+                guard let price = Float(record.price ?? "0") else { return }
+                
+                if record.isCost {
+                    costValue += price
+                } else {
+                    depositValue += price
+                }
             }
         }
         
@@ -146,6 +216,4 @@ extension MainViewController: MainViewModelDelegate {
             self.mainTableView.reloadData()
         }
     }
-    
-    
 }

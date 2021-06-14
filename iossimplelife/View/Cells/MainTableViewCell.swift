@@ -51,11 +51,16 @@ class MainTableViewCell: UITableViewCell {
                                   width: 60,
                                   height: contentView.height)
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        iconImage.image = nil
+        titleLabel.text = nil
+        valueLabel.text = nil
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     public func configure(with model: Record, _ type: SegmentedStyle) {
@@ -66,7 +71,6 @@ class MainTableViewCell: UITableViewCell {
         } else {
             titleLabel.text = model.category
         }
-        
         
         titleLabel.sizeToFit()
         valueLabel.sizeToFit()

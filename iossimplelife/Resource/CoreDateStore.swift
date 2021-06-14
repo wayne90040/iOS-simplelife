@@ -134,12 +134,20 @@ extension CoreDataStore {
 // MARK: - Record Core Data
 extension CoreDataStore {
     // C
-    func insertRecord(category: String, imageUrl: String, price: String, note: String, date: Date, isCost: Bool, completion: @escaping(Bool) -> Void) {
+    func insertRecord(category: String, imageUrl: String, price: String, note: String,
+                      date: Date, isCost: Bool, completion: @escaping(Bool) -> Void) {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd"
+        
+        let dateString = formatter.string(from: date)
+        
+        
         let newItem = Record(context: context)
         newItem.category = category
         newItem.price = price
         newItem.note = note
-        newItem.date = date
+        newItem.date = dateString
         newItem.imageUrl = imageUrl
         newItem.isCost = isCost
         
@@ -166,8 +174,47 @@ extension CoreDataStore {
         return results
     }
     
-    func fetchDaysOfRecords() {
+    // 查看哪些
+    func fetchDatesOfRecords() -> [[String: String]]? {
         
+//        let keypathExp = NSExpression(forKeyPath: "date") // can be any column
+//        let expression = NSExpression(forFunction: "count:", arguments: [keypathExp])
+
+//        let countDesc = NSExpressionDescription()
+//        countDesc.expression = expression
+//        countDesc.name = "count"
+//        countDesc.expressionResultType = .integer64AttributeType
+
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Record")
+        request.propertiesToFetch = ["date"]
+        request.propertiesToGroupBy = ["date"]
+        
+        request.resultType = .dictionaryResultType
+        
+        do {
+            let results = try context.fetch(request) as? [[String: String]]
+            print(results)
+            return results
+            
+        } catch {
+            print("fetchDatesOfRecords: \(error)")
+        }
+        return nil
+    }
+    
+    func fetchRecordOfDate(dateString: String) -> [Record] {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Record")
+        let predicate = NSPredicate(format: "date=%@", dateString)
+        request.predicate = predicate
+        
+        var result = [Record]()
+        do {
+            result = try context.fetch(request) as! [Record]
+        } catch {
+            print("fetchRecordOfDate: \(error)")
+        }
+        
+        return result
     }
     
     // U
